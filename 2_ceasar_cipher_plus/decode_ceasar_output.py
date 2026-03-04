@@ -5,7 +5,7 @@ f.close()
 english = english.split("\n")
 
 i = 0
-with open("../src/ceasar_output.txt", "r") as file:
+with open("ceasar_output.txt", "r") as file:
     for line in file:
         i += 1
         if line[0] != ";":
