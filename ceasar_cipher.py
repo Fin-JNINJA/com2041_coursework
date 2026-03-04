@@ -18,4 +18,6 @@ for i in range(a_len):
                 # see if i can remove str once conversion is done
                 cipher_letter = cipher_letter.upper()
         plaintext += cipher_letter
-    print(plaintext)
+    print(str(i) + ": " + plaintext)
+# gives: Mieux vaut prevenir que guerir.
+# key: 20
