@@ -36,15 +36,11 @@ for a in range(max):
         for c in range(max):
             output += f"\n;{a},{b},{c};{ceaser_plus(a, b, c, ciphertext)}"
 
-o = open("ceasar_output.txt", "w")
+o = open("../src/ceasar_output.txt", "w")
 o.write(output)
 o.close()
-
-# f = open("ukenglish.txt", "r")
-# english = f.read()
-# f.close()
-
-# if any(word in english for word in plaintext.split(" ")):
-#     print(a, b, c, i)
-# gives:
-# key:
+# gives: He who will not economize will have to agonize. - Confucius
+# a: 13
+# b: 13
+# c: 5
+# key: 4
