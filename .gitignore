@@ -1,4 +1,4 @@
 ceasar_output.txt
 .vscode
-/*
-/!*.cpp
+cpp/*
+cpp/!*.cpp
