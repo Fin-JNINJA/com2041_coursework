@@ -1,14 +1,14 @@
 import string
-# "LljujlbhxoqjlawnsyjnpkkmzqhjtgxvmsepBrrpeYenoq" #my one
-ciphertext = "FvsjdhazptxrvuuzwqxrqiuyyxnvptmcgllicjztyswimicbttyrhkottqkrhtxxwmuoslbfkkhbiyYcqcfNhetj"
-a_len = len(string.ascii_lowercase)
+ciphertext = "LljujlbhxoqjlawnsyjnpkkmzqhjtgxvmsepBrrpeYenoq"
+alpha = string.ascii_lowercase
+a_len = len(alpha)
 
 output = ""
 for initial in range(a_len):
-    prev = initial
-    for k in range(a_len):
+    for key in range(a_len):
+        prev = initial
         plaintext = ""
-        for cipher_letter in ciphertext:
+        for i, cipher_letter in enumerate(ciphertext):
             upper = False
             if cipher_letter in string.ascii_letters:
                 if cipher_letter in string.ascii_uppercase:
@@ -16,20 +16,18 @@ for initial in range(a_len):
                     upper = True
                 # do conversion and mod here
 
-                cipher_letter = string.ascii_lowercase[(
-                    string.ascii_lowercase.index(
-                        cipher_letter) + k + prev
-                ) % (a_len)]
+                cipher_letter = alpha[(alpha.index(cipher_letter) - key - prev)
+                                      % (a_len)]
 
                 # sets previous cipher letter to current ciphered letter
-                prev = string.ascii_lowercase.index(cipher_letter)
+                prev = alpha.index(ciphertext[i].lower())
                 if upper:
                     cipher_letter = cipher_letter.upper()
                     # REMOVE BELOW
-                    # plaintext += " "
+                    plaintext += " "
             plaintext += cipher_letter
         # print("aa")
-        output += "\n" + str(k) + "," + str(initial) + ": " + plaintext
+        output += "\n" + str(key) + "," + str(initial) + ": " + plaintext
 
 o = open("3_caesar_stream/ceasar_output.txt", "w")
 o.write(output)
