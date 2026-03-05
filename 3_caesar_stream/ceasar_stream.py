@@ -24,7 +24,7 @@ for initial in range(a_len):
                 if upper:
                     cipher_letter = cipher_letter.upper()
                     # REMOVE BELOW
-                    plaintext += " "
+                    # plaintext += " "
             plaintext += cipher_letter
         # print("aa")
         output += "\n" + str(key) + "," + str(initial) + ": " + plaintext
@@ -32,3 +32,5 @@ for initial in range(a_len):
 o = open("3_caesar_stream/ceasar_output.txt", "w")
 o.write(output)
 o.close()
+# 24,5: IcanresisteverythingexcepttemptationOscarWilde
+# PUT SPACES IN????
