@@ -36,7 +36,7 @@ for a in range(max):
         for c in range(max):
             output += f"\n;{a},{b},{c};{ceaser_plus(a, b, c, ciphertext)}"
 
-o = open("ceasar_output.txt", "w")
+o = open("2_caesar_cipher/ceasar_output.txt", "w")
 o.write(output)
 o.close()
 # gives: He who will not economize will have to agonize. - Confucius
