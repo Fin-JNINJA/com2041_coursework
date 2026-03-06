@@ -6,9 +6,10 @@ int main() {
 
     string text;
     ifstream InputFile;
-    InputFile.open("../src/ceasar_output.txt");
+    InputFile.open("../src/ukenglish.txt");
     while (InputFile >> text){
         cout<<text<<endl;
+
     }
     return 0;
 }

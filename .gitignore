@@ -1,4 +1,5 @@
 ceasar_output.txt
+4_password_cracking/hashes.txt
 .vscode
 cpp/*
 cpp/!*.cpp
