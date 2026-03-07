@@ -9,7 +9,7 @@ names = names.split("\n")
 
 def branch(name:str, i:int, symbols:list) ->str:
     newNames = []
-    newNames.append(name)
+    #newNames.append(name)
     symbols.append(name[i])
     for symbol in symbols:
         name = list(name)
@@ -30,6 +30,8 @@ def substitute(name:str,i:int) -> list:
             symbols = ["0","*"]
         case "i":
             symbols = ["1","!"]
+        case "l":
+            symbols = ["1"]
         case "a":
             symbols =["4","@","&"]
         case "e":
@@ -38,11 +40,9 @@ def substitute(name:str,i:int) -> list:
             symbols = ["$","5"]
         case _:
             if len(name) > i+1:
-                newNames.extend(substitute(name,i+1)) # i think#newNames += name
-            # else:
-            #     newNames.append(name)
-    if len(symbols) >0:
-        newNames.extend(branch(name,i,["4","@","&"]))
+                newNames.extend(substitute(name,i+1))
+    if len(symbols) > 0:
+        newNames.extend(branch(name,i,symbols))
 
     return newNames
 
@@ -52,7 +52,11 @@ for name in names:
     #add extra words to check with the formatting extras specified in pdf
     #print(name)
     #extraNames.append(name)
-    extraNames.extend(substitute(name,0))
+    additional = []
+    additional = substitute(name,0)
+    if len(additional) == 0:
+        additional.append(name)
+    extraNames.extend(additional)
 print(*extraNames)
 
 digitExtraNames = []
@@ -68,10 +72,11 @@ for name in digitExtraNames:
     hash = hashlib.sha256()
     hash.update((name + salt).encode())
     if str(hash.hexdigest()) == trueHash:
+        print("AAAAAAAAA")
         print(name)
         print(i)
         break
+    
     if i % 50000 == 5:
         print(str(i))
-        print(name)
 print(i)
