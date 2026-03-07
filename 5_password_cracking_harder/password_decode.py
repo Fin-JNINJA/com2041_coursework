@@ -13,29 +13,36 @@ def branch(name:str, i:int, symbols:list) ->str:
     for symbol in symbols:
         name = list(name)
         name[i] = symbol
-        print(str(name))
-        if len(name) < i+1:
-            newNames += substitute(str(name),i+1)
+        name = "".join(name)
+        newNames.append(name)
+        if len(name) > i+1:
+            newNames.extend(substitute(name,i+1))
     return newNames
 
 
 def substitute(name:str,i:int) -> list:
     
     newNames = []
+    symbols = []
     match list(name)[i].lower():
         case "o":
-            newNames += branch(name,i,["0","*"])
+            symbols = ["0","*"]
         case "i":
-            newNames += branch(name,i,["1","!"])
+            symbols = ["1","!"]
         case "a":
-            newNames += branch(name,i,["4","@","&"])
+            symbols =["4","@","&"]
         case "e":
-            newNames += branch(name,i,["3"])
+            symbols = ["3"]
         case "s":
-            newNames += branch(name,i,["$","5"])
+            symbols = ["$","5"]
         case _:
-            if len(name) < i+1:
-                newNames += substitute(name,i) # i think#newNames += name
+            if len(name) > i+1:
+                newNames.extend(substitute(name,i+1)) # i think#newNames += name
+            # else:
+            #     newNames.append(name)
+    if len(symbols) >0:
+        newNames.extend(branch(name,i,["4","@","&"]))
+
     return newNames
 
 
@@ -44,7 +51,7 @@ for name in names:
     #add extra words to check with the formatting extras specified in pdf
     #print(name)
     extraNames.append(name)
-    extraNames += substitute(name,0)
+    extraNames.extend(substitute(name,0))
 
 print(extraNames)
 i = 0
