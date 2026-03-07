@@ -1,4 +1,6 @@
 ceasar_output.txt
+6_cracking_ciphertext_partial_key/output_p.txt
+6_cracking_ciphertext_partial_key/output_s.txt
 5_password_cracking_harder/passwords.txt
 4_password_cracking/hashes.txt
 .vscode
