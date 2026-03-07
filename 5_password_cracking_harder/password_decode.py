@@ -10,6 +10,7 @@ names = names.split("\n")
 def branch(name:str, i:int, symbols:list) ->str:
     newNames = []
     newNames.append(name)
+    symbols.append(name[i])
     for symbol in symbols:
         name = list(name)
         name[i] = symbol
@@ -50,19 +51,27 @@ extraNames = []
 for name in names:
     #add extra words to check with the formatting extras specified in pdf
     #print(name)
-    extraNames.append(name)
+    #extraNames.append(name)
     extraNames.extend(substitute(name,0))
+print(*extraNames)
 
-print(extraNames)
-i = 0
+digitExtraNames = []
 for name in extraNames:
+    for i in range(100):
+        if i<10:
+            i = "0" +str(i)
+        digitExtraNames.append(name+str(i))
+#print(extraNames)
+i = 0
+for name in digitExtraNames:
     i += 1
-    hash =hashlib.sha256()
+    hash = hashlib.sha256()
     hash.update((name + salt).encode())
     if str(hash.hexdigest()) == trueHash:
         print(name)
         print(i)
         break
-    if i % 50 == 0:
+    if i % 50000 == 5:
         print(str(i))
+        print(name)
 print(i)
