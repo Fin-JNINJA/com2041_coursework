@@ -5,6 +5,7 @@ f = open("src/dog_names.txt", "r")
 names = f.read()
 f.close()
 names = names.split("\n")
+#names = ["tAtL"]
 #print(names)
 
 def branch(name:str, i:int, symbols:list) ->str:
@@ -59,13 +60,17 @@ for name in names:
     extraNames.extend(additional)
 print(*extraNames)
 
+o = open("5_password_cracking_harder/passwords.txt", "w")
 digitExtraNames = []
 for name in extraNames:
+    o.write(name +"\n")
     for i in range(100):
         if i<10:
             i = "0" +str(i)
         digitExtraNames.append(name+str(i))
 #print(extraNames)
+
+
 i = 0
 for name in digitExtraNames:
     i += 1
@@ -79,4 +84,6 @@ for name in digitExtraNames:
     
     if i % 50000 == 5:
         print(str(i))
+o.close()
+
 print(i)
