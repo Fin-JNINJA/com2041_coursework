@@ -8,6 +8,8 @@ names = names.split("\n")
 #names = ["tAtL"]
 #print(names)
 
+#NOT GENERATING NAMES PROPERLY
+
 def branch(name:str, i:int, symbols:list) ->str:
     newNames = []
     #newNames.append(name)
@@ -59,6 +61,7 @@ for name in names:
         additional.append(name)
     extraNames.extend(additional)
 print(*extraNames)
+
 
 o = open("5_password_cracking_harder/passwords.txt", "w")
 digitExtraNames = []
