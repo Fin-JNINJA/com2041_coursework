@@ -36,8 +36,24 @@ for word in letter_10_filtered:
         maybe_plain_word += maybe_plain_letter
     if maybe_plain_word in letter_10_filtered:
         print(maybe_plain_word, word)
+        plaintexts = [maybe_plain_word, word]
         break
 
+# ciphertexts[0]-maybe_plain_word
+# ciphertexts[0]-word
+
+for i, word in enumerate(ciphertexts):
+    key = ""
+    for j, letter in enumerate(word):
+        maybe_key_letter = "?"
+        if letter in string.ascii_letters and plaintexts[i][j] in string.ascii_letters:
+            maybe_key_letter = string.ascii_lowercase[(26 +
+                                                       string.ascii_lowercase.index(
+                                                           letter) - string.ascii_lowercase.index(plaintexts[i][j])
+                                                       ) % (len(string.ascii_lowercase))]
+        key += maybe_key_letter
+    print(key)
 
 # deciphered
 # cosponsors
+# key: tterrotyqy
