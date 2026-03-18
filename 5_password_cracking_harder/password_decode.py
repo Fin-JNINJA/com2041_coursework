@@ -5,8 +5,9 @@ f = open("src/dog_names.txt", "r")
 names = f.read()
 f.close()
 names = names.split("\n")
-# names = ["tAtL"]
-# print(names)
+
+
+# check capitals?
 
 # NOT GENERATING NAMES PROPERLY
 
@@ -61,7 +62,7 @@ for name in names:
     if len(additional) == 0:
         additional.append(name)
     extraNames.extend(additional)
-print(*extraNames)
+print(extraNames)
 
 
 o = open("5_password_cracking_harder/passwords.txt", "w")
@@ -74,14 +75,20 @@ for name in extraNames:
         else:
             num = i
         digitExtraNames.append(name+str(num))
-print(*digitExtraNames)
-
+# print(digitExtraNames)
+o.close()
 
 i = 0
+o = open("5_password_cracking_harder/hashes.txt", "w")
 for name in digitExtraNames:
     i += 1
+    # (name + salt).encode())
+    # ("contemplates" + "FZ23sDK0NcUi").encode())
     hash = hashlib.sha256((name + salt).encode())
-    if str(hash.hexdigest()) == trueHash:
+
+    hash_current = str(hash.hexdigest())
+    o.write(hash_current + "\n")
+    if str(hash_current) == trueHash:
         print("AAAAAAAAA")
         print(name)
         print(i)
