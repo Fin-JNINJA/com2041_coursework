@@ -11,17 +11,17 @@ names = names.split("\n")
 # NOT GENERATING NAMES PROPERLY
 
 
-def branch(name: str, i: int, symbols: list) -> str:
+def branch(name: str, i: int, symbols: list) -> list:
     newNames = []
     # newNames.append(name)
     symbols.append(name[i])
     for symbol in symbols:
-        name = list(name)
-        name[i] = symbol
-        name = "".join(name)
-        newNames.append(name)
-        if len(name) > i+1:
-            newNames.extend(substitute(name, i+1))
+        name_list = list(name)
+        name_list[i] = symbol
+        name_new = "".join(name_list)
+        newNames.append(name_new)
+        if len(name_new) > i+1:
+            newNames.extend(substitute(name_new, i+1))
     return newNames
 
 
@@ -70,16 +70,17 @@ for name in extraNames:
     o.write(name + "\n")
     for i in range(100):
         if i < 10:
-            i = "0" + str(i)
-        digitExtraNames.append(name+str(i))
-# print(extraNames)
+            num = "0" + str(i)
+        else:
+            num = i
+        digitExtraNames.append(name+str(num))
+print(*digitExtraNames)
 
 
 i = 0
 for name in digitExtraNames:
     i += 1
-    hash = hashlib.sha256()
-    hash.update((name + salt).encode())
+    hash = hashlib.sha256((name + salt).encode())
     if str(hash.hexdigest()) == trueHash:
         print("AAAAAAAAA")
         print(name)
