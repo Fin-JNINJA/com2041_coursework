@@ -1,15 +1,15 @@
 1)
-a:20
+a:20:s
 b:Mieux vaut prevenir que guerir.
 
 2)
 a:[13,13,5]
-b:4
+b:4:c
 c:He who will not economize will have to agonize. - Confucius
 
 3)
-a:24
-b:5
+a:24:w
+b:5:d
 c:IcanresisteverythingexcepttemptationOscarWilde
 //add spaces?
 
@@ -29,3 +29,5 @@ a:tterrotyqy
 b:[deciphered,cosponsors]
 
 8) dont know what approach to use
+
+CHANGE ALL TO NUMBERS !!! CHECK INDEXING
