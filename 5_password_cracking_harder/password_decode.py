@@ -5,14 +5,15 @@ f = open("src/dog_names.txt", "r")
 names = f.read()
 f.close()
 names = names.split("\n")
-#names = ["tAtL"]
-#print(names)
+# names = ["tAtL"]
+# print(names)
 
-#NOT GENERATING NAMES PROPERLY
+# NOT GENERATING NAMES PROPERLY
 
-def branch(name:str, i:int, symbols:list) ->str:
+
+def branch(name: str, i: int, symbols: list) -> str:
     newNames = []
-    #newNames.append(name)
+    # newNames.append(name)
     symbols.append(name[i])
     for symbol in symbols:
         name = list(name)
@@ -20,43 +21,43 @@ def branch(name:str, i:int, symbols:list) ->str:
         name = "".join(name)
         newNames.append(name)
         if len(name) > i+1:
-            newNames.extend(substitute(name,i+1))
+            newNames.extend(substitute(name, i+1))
     return newNames
 
 
-def substitute(name:str,i:int) -> list:
-    
+def substitute(name: str, i: int) -> list:
+
     newNames = []
     symbols = []
     match list(name)[i].lower():
         case "o":
-            symbols = ["0","*"]
+            symbols = ["0", "*"]
         case "i":
-            symbols = ["1","!"]
+            symbols = ["1", "!"]
         case "l":
             symbols = ["1"]
         case "a":
-            symbols =["4","@","&"]
+            symbols = ["4", "@", "&"]
         case "e":
             symbols = ["3"]
         case "s":
-            symbols = ["$","5"]
+            symbols = ["$", "5"]
         case _:
             if len(name) > i+1:
-                newNames.extend(substitute(name,i+1))
+                newNames.extend(substitute(name, i+1))
     if len(symbols) > 0:
-        newNames.extend(branch(name,i,symbols))
+        newNames.extend(branch(name, i, symbols))
 
     return newNames
 
 
 extraNames = []
 for name in names:
-    #add extra words to check with the formatting extras specified in pdf
-    #print(name)
-    #extraNames.append(name)
+    # add extra words to check with the formatting extras specified in pdf
+    # print(name)
+    # extraNames.append(name)
     additional = []
-    additional = substitute(name,0)
+    additional = substitute(name, 0)
     if len(additional) == 0:
         additional.append(name)
     extraNames.extend(additional)
@@ -66,12 +67,12 @@ print(*extraNames)
 o = open("5_password_cracking_harder/passwords.txt", "w")
 digitExtraNames = []
 for name in extraNames:
-    o.write(name +"\n")
+    o.write(name + "\n")
     for i in range(100):
-        if i<10:
-            i = "0" +str(i)
+        if i < 10:
+            i = "0" + str(i)
         digitExtraNames.append(name+str(i))
-#print(extraNames)
+# print(extraNames)
 
 
 i = 0
@@ -84,7 +85,7 @@ for name in digitExtraNames:
         print(name)
         print(i)
         break
-    
+
     if i % 50000 == 5:
         print(str(i))
 o.close()
