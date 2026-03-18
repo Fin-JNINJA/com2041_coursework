@@ -134,3 +134,6 @@ for name in digitExtraNames:
     if i % 50000 == 0:
         print(str(i))
 o.close()
+
+# gives:p*ppy86
+# poppy
