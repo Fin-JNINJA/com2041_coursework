@@ -39,15 +39,18 @@ def ceaser_plus(a, b, c, i, ciphertext) -> str:
 
 
 max = 26
-for word in english:
-    if len(word) == 7:
-        for letter in word:
-            for a in range(max):
-                for b in range(max):
-                    for c in range(max):
-                        for i, ciphertext_letter in enumerate(ciphertext):
-                            output = ""
+a = 0
+b = 0
+c = 1
+o = open("8_vigenere_plus/plaintextsmaybe.txt", "w")
 
-                            output += f"\n;{a},{b},{c};{ceaser_plus(
-                                a, b, c, string.ascii_lowercase.index(letter),
-                                ciphertext_letter)}"
+for word in english:
+    output = ""
+    if len(word) == 7:
+        for i, ciphertext_letter in enumerate(ciphertext):
+            output += ceaser_plus(a, b, c, string.ascii_lowercase.index(
+                word[i & (len(word)-1)]), ciphertext_letter).replace("\n", "")
+
+        o.write(output + "\n")
+
+o.close()

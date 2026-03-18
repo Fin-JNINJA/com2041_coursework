@@ -7,6 +7,7 @@ ceasar_output.txt
 7_reused_otp/output_s.txt
 5_password_cracking_harder/passwords.txt
 4_password_cracking/hashes.txt
+8_vigenere_plus/plaintextsmaybe.txt
 .vscode
 cpp/*
 cpp/!*.cpp
